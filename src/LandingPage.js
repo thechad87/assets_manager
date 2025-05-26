@@ -1,4 +1,5 @@
 import React from "react";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Link } from 'react-router-dom';
 
 export default function LandingPage() {
@@ -11,7 +12,7 @@ export default function LandingPage() {
             {/* Placeholder for logo */}
             <span className="text-white font-bold text-xl">O</span>
           </div>
-          <span className="text-2xl font-semibold text-gray-800">Octagos</span>
+          <span className="text-2xl font-semibold text-gray-800">Asseto</span>
         </div>
         <nav className="hidden md:flex space-x-8 text-gray-600 font-medium">
           <a href="#" className="hover:text-blue-500">Solutions</a>

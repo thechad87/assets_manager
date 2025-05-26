@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateEmail(email)) {
+      navigate("/assets");
+    } else {
+      alert("Please enter a valid email address.");
+    }
+  };
+
   return (
     <div className="min-h-screen flex">
       {/* Left side: Branding */}
@@ -40,12 +57,14 @@ export default function LoginPage() {
           </div>
           <h2 className="text-xl font-semibold text-center mb-2">Welcome back!</h2>
           <p className="text-gray-500 text-center mb-6">Use your work email to sign in to the app.</p>
-          <form className="flex flex-col space-y-4">
+          <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
             <input
               type="email"
               placeholder="Email address*"
               className="border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              value={email}
+              onChange={e => setEmail(e.target.value)}
             />
             <button
               type="submit"
